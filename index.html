@@ -178,7 +178,10 @@ body{font-family:'Nunito',sans-serif;background:var(--light);min-height:100vh;co
 <div id="s-dash" class="screen">
   <div class="dash-hdr">
     <div class="logo">Jumpin' <span>Jellybeans</span></div>
-    <div class="chip"><div class="av" id="d-av">J</div><span id="d-name">Team Member</span></div>
+    <div style="display:flex;align-items:center;gap:.5rem">
+      <div class="chip"><div class="av" id="d-av">J</div><span id="d-name">Team Member</span></div>
+      <button onclick="logout()" style="background:#F5F5F5;border:none;border-radius:8px;padding:.35rem .75rem;font-family:Nunito,sans-serif;font-size:.75rem;font-weight:800;color:#999;cursor:pointer;">Sign Out</button>
+    </div>
   </div>
   <div class="welcome-banner">
     <h2 id="d-welcome">Welcome!</h2>
@@ -959,9 +962,18 @@ function copyRpt(){
   });
 }
 function restart(){progress={};saveAll();renderDash();show('dash')}
+function logout(){
+  userName='';userStore='';
+  try{localStorage.removeItem('jb_m1v2_user')}catch(e){}
+  document.getElementById('inp-name').value='';
+  document.getElementById('inp-store').value='';
+  show('login');
+}
 
 loadAll();
-if(userName){renderDash();show('dash')}
+// Always start at login — user must log in each session
+// Progress is saved but login is always required
+show('login');
 </script>
 </body>
 </html>
