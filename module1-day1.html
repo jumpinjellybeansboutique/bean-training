@@ -409,7 +409,7 @@ async function kickoffS1(){
   try{
     var res=await fetch('https://api.anthropic.com/v1/messages',{
       method:'POST',headers:{'Content-Type':'application/json','x-api-key':(_k1+_k2),'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
-      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:250,system:SECTION1_SYSTEM,
+      body:JSON.stringify({model:'claude-sonnet-4-5',max_tokens:250,system:SECTION1_SYSTEM,
         messages:[{role:'user',content:'[START] My name is '+userName+'. I am ready to begin Section 1.'}]})
     });
     var d=await res.json();
@@ -434,7 +434,7 @@ async function submitS1(){
   try{
     var res=await fetch('https://api.anthropic.com/v1/messages',{
       method:'POST',headers:{'Content-Type':'application/json','x-api-key':(_k1+_k2),'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
-      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:350,system:SECTION1_SYSTEM,messages:s1History})
+      body:JSON.stringify({model:'claude-sonnet-4-5',max_tokens:350,system:SECTION1_SYSTEM,messages:s1History})
     });
     var d=await res.json();
     var reply=d.content&&d.content[0]?d.content[0].text:'Great — keep going!';
@@ -492,7 +492,7 @@ async function kickoffS2(){
   showS2Typing();
   try{
     var res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':(_k1+_k2),'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
-      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:250,system:SECTION2_SYSTEM,
+      body:JSON.stringify({model:'claude-sonnet-4-5',max_tokens:250,system:SECTION2_SYSTEM,
         messages:[{role:'user',content:'[START] My name is '+userName+'. I completed Section 1 and am ready for Section 2.'}]})});
     var d=await res.json();
     var reply=d.content&&d.content[0]?d.content[0].text:'Welcome back '+userName+'! Let us go deep on EPiC.';
@@ -511,7 +511,7 @@ async function submitS2(){
   document.getElementById('s2-sbtn').disabled=true;showS2Typing();
   try{
     var res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':(_k1+_k2),'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
-      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:350,system:SECTION2_SYSTEM,messages:s2History})});
+      body:JSON.stringify({model:'claude-sonnet-4-5',max_tokens:350,system:SECTION2_SYSTEM,messages:s2History})});
     var d=await res.json();console.log('API response:',JSON.stringify(d).substring(0,200));var reply=d.content&&d.content[0]?d.content[0].text:(d.error?'API Error: '+d.error.message:'No response received');
     hideS2Typing();
     if(reply.includes('SECTION_TWO_COMPLETE')){
@@ -560,7 +560,7 @@ async function kickoffS3(){
   showS3Typing();
   try{
     var res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':(_k1+_k2),'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
-      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:250,system:SECTION3_SYSTEM,
+      body:JSON.stringify({model:'claude-sonnet-4-5',max_tokens:250,system:SECTION3_SYSTEM,
         messages:[{role:'user',content:'[START] My name is '+userName+'. I completed Sections 1 and 2 and am ready for Section 3.'}]})});
     var d=await res.json();
     var reply=d.content&&d.content[0]?d.content[0].text:'Welcome to Section 3 '+userName+'. Let us talk about the policies that protect everything we have built.';
@@ -579,7 +579,7 @@ async function submitS3(){
   document.getElementById('s3-sbtn').disabled=true;showS3Typing();
   try{
     var res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':(_k1+_k2),'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
-      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:350,system:SECTION3_SYSTEM,messages:s3History})});
+      body:JSON.stringify({model:'claude-sonnet-4-5',max_tokens:350,system:SECTION3_SYSTEM,messages:s3History})});
     var d=await res.json();console.log('API response:',JSON.stringify(d).substring(0,200));var reply=d.content&&d.content[0]?d.content[0].text:(d.error?'API Error: '+d.error.message:'No response received');
     hideS3Typing();
     if(reply.includes('SECTION_THREE_COMPLETE')){
@@ -628,7 +628,7 @@ async function kickoffS4(){
   showS4Typing();
   try{
     var res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':(_k1+_k2),'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
-      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:250,system:SECTION4_SYSTEM,
+      body:JSON.stringify({model:'claude-sonnet-4-5',max_tokens:250,system:SECTION4_SYSTEM,
         messages:[{role:'user',content:'[START] My name is '+userName+'. I completed Sections 1, 2 and 3 and am ready for Section 4.'}]})});
     var d=await res.json();
     var reply=d.content&&d.content[0]?d.content[0].text:'Welcome to Section 4 '+userName+'. Let us talk about your rights, your voice, and the structure that supports you.';
@@ -647,7 +647,7 @@ async function submitS4(){
   document.getElementById('s4-sbtn').disabled=true;showS4Typing();
   try{
     var res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':(_k1+_k2),'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
-      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:350,system:SECTION4_SYSTEM,messages:s4History})});
+      body:JSON.stringify({model:'claude-sonnet-4-5',max_tokens:350,system:SECTION4_SYSTEM,messages:s4History})});
     var d=await res.json();console.log('API response:',JSON.stringify(d).substring(0,200));var reply=d.content&&d.content[0]?d.content[0].text:(d.error?'API Error: '+d.error.message:'No response received');
     hideS4Typing();
     if(reply.includes('SECTION_FOUR_COMPLETE')){
@@ -696,7 +696,7 @@ async function kickoffS5(){
   showS5Typing();
   try{
     var res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':(_k1+_k2),'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
-      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:250,system:SECTION5_SYSTEM,
+      body:JSON.stringify({model:'claude-sonnet-4-5',max_tokens:250,system:SECTION5_SYSTEM,
         messages:[{role:'user',content:'[START] My name is '+userName+'. I completed all four sections and am ready for Section 5.'}]})});
     var d=await res.json();
     var reply=d.content&&d.content[0]?d.content[0].text:'Welcome to the final section '+userName+'. Let us talk about how to execute on the floor.';
@@ -715,7 +715,7 @@ async function submitS5(){
   document.getElementById('s5-sbtn').disabled=true;showS5Typing();
   try{
     var res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':(_k1+_k2),'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
-      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:350,system:SECTION5_SYSTEM,messages:s5History})});
+      body:JSON.stringify({model:'claude-sonnet-4-5',max_tokens:350,system:SECTION5_SYSTEM,messages:s5History})});
     var d=await res.json();console.log('API response:',JSON.stringify(d).substring(0,200));var reply=d.content&&d.content[0]?d.content[0].text:(d.error?'API Error: '+d.error.message:'No response received');
     hideS5Typing();
     if(reply.includes('SECTION_FIVE_COMPLETE')){
@@ -815,7 +815,7 @@ async function submitSA(){
   try{
     var res=await fetch('https://api.anthropic.com/v1/messages',{
       method:'POST',headers:{'Content-Type':'application/json','x-api-key':(_k1+_k2),'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
-      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:150,
+      body:JSON.stringify({model:'claude-sonnet-4-5',max_tokens:150,
         system:'Grade this short answer strictly. Required concepts (need at least '+q.minKeywords+' of these): '+q.keywords.join(', ')+'. Reply ONLY with JSON: {"pass":true/false,"feedback":"one sentence"}. No other text.',
         messages:[{role:'user',content:'Question: "'+q.q+'" Answer: "'+answer+'"'}]})
     });
@@ -845,7 +845,7 @@ async function retrySA(){
   try{
     var res=await fetch('https://api.anthropic.com/v1/messages',{
       method:'POST',headers:{'Content-Type':'application/json','x-api-key':(_k1+_k2),'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
-      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:150,
+      body:JSON.stringify({model:'claude-sonnet-4-5',max_tokens:150,
         system:'Grade strictly. Required concepts (need '+q.minKeywords+'): '+q.keywords.join(', ')+'. Reply ONLY with JSON: {"pass":true/false,"feedback":"one sentence"}.',
         messages:[{role:'user',content:'Q: "'+q.q+'" A: "'+answer+'"'}]})
     });
@@ -886,7 +886,7 @@ async function startRemed(score){
   try{
     var res=await fetch('https://api.anthropic.com/v1/messages',{
       method:'POST',headers:{'Content-Type':'application/json','x-api-key':(_k1+_k2),'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
-      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:300,system:sys,
+      body:JSON.stringify({model:'claude-sonnet-4-5',max_tokens:300,system:sys,
         messages:[{role:'user',content:'My name is '+userName+'. I need help reviewing.'}]})
     });
     var d=await res.json();
@@ -906,7 +906,7 @@ async function sendRemed(){
   try{
     var res=await fetch('https://api.anthropic.com/v1/messages',{
       method:'POST',headers:{'Content-Type':'application/json','x-api-key':(_k1+_k2),'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
-      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:300,system:sys,messages:remedHist})
+      body:JSON.stringify({model:'claude-sonnet-4-5',max_tokens:300,system:sys,messages:remedHist})
     });
     var d=await res.json();
     var reply=d.content&&d.content[0]?d.content[0].text:'Keep going!';
