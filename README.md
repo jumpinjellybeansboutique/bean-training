@@ -1,1 +1,1 @@
-# bean-training
+Training Moved to Team app
